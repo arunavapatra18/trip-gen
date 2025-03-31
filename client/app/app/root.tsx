@@ -1,5 +1,5 @@
 import { rootAuthLoader } from "@clerk/react-router/ssr.server";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/react-router";
+import { SignedIn, SignedOut, UserButton } from "@clerk/react-router";
 import { ClerkProvider } from "@clerk/clerk-react";
 
 import {
@@ -13,6 +13,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import CustomSignInButton from "./auth/sign-in-button";
 
 export async function loader(args:Route.LoaderArgs) {
   return rootAuthLoader(args)
@@ -53,17 +54,28 @@ export default function App({loaderData} : Route.ComponentProps) {
   return (
     <ClerkProvider
       loaderData={loaderData}
-      signInFallbackRedirectUrl="/"
-      signUpFallbackRedirectUrl="/"
+      signInUrl="/signin"
+      signUpUrl="/signup"
+      signInFallbackRedirectUrl="/dashboard"
+      signUpFallbackRedirectUrl="/dashboard"
+      afterSignOutUrl="/signin"
       publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY!}
+      routing='path'
     >
-      <header className="flex items-center justify-center py-8 px-4">
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
+      <header className="flex justify-between items-center py-4 px-8">
+        <div>
+          <a href="/">
+          YetAnotherTripPlanner
+          </a>
+        </div>
+        <div>
         <SignedIn>
           <UserButton />
         </SignedIn>
+        <SignedOut>
+          <CustomSignInButton />
+        </SignedOut>
+        </div>
       </header>
       <main>
       <Outlet />

@@ -1,5 +1,8 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
+import { SignedIn, SignedOut } from "@clerk/react-router";
+import Dashboard from "./dashboard";
+import { Navigate } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +12,14 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Welcome />;
+  return (
+    <div>
+      <SignedOut>
+        <Welcome />
+      </SignedOut>
+      <SignedIn >
+        <Navigate to="/dashboard" replace />
+      </SignedIn>
+    </div>
+  );
 }
