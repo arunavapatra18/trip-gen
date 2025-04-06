@@ -5,38 +5,23 @@ from llm_model import send_data_to_llm
 trip_bp = Blueprint('trip', __name__)
 
 # Define the /generate_trip route to handle POST requests
-@trip_bp.route('/generate_trip', methods=['POST'])
+@trip_bp.route('/trips', methods=['POST'])
 def generate_trip():
     # Extract data from the incoming JSON request
     data = request.get_json()
-    meta_data= send_data_to_llm(data)
+    Description = f"Please Plan a trip from {data['source']} {data['destinations']}"
+    trip_data = {"Description": Description}
+
+    # Assuming send_data_to_llm(data) returns a dictionary
+    trip_data.update(data)
+    meta_data = send_data_to_llm(trip_data)
     # Validate required fields
     if not data:
         return jsonify({"error": "No data provided"}), 400
     
-    required_fields = ['Description', 'start_date', 'source', 'Destination','days']
+    required_fields = [ 'source', 'destinations', 'dateForm','dateto', 'days', 'travellers', 'additionalQuery']
     
-    # #Check if all required fields are present
-    # for field in required_fields:
-    #     if field not in data:
-    #         return jsonify({"error": f"Missing required field: {field}"}), 400
-
-    # Validate the types of the fields
-    # if not isinstance(data['Description'], str):
-    #     return jsonify({"error": "Field 'days' must be a positive integer"}), 400
-    
-    # if not isinstance(data['start_date'], str) or not data['source']:
-    #     return jsonify({"error": "Field 'source' must be a non-empty string"}), 400
-    
-    # if not isinstance(data['destination'], list) or not all(isinstance(d, str) for d in data['destination']):
-    #     return jsonify({"error": "Field 'destination' must be a list of non-empty strings"}), 400
-    
-    # if not isinstance(data['passenger'], int) or data['passenger'] <= 0:
-    #     return jsonify({"error": "Field 'passenger' must be a positive integer"}), 400
-
-    # Optional field 'date'
     date = data.get('date', None)  # If 'date' is not provided, it defaults to None
-
 
     # Response to return
     return jsonify({
