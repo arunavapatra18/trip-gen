@@ -1,5 +1,5 @@
 import { RedirectToSignIn, SignedIn, SignedOut, SignUp } from '@clerk/react-router'
-import DashboardComponent from '~/dashboard/dashboard'
+import DashboardComponent from '~/components/dashboard'
 
 export default function Dashboard() {
   return (

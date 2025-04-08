@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
  */
 export default function ModalForm() {
     const [source, setSource] = useState('');
-    const [description, setDescription] = useState('');
     const [destinations, setDestinations] = useState('');
     const [dateFrom, setDateFrom] = useState('');
     const [dateTo, setDateTo] = useState('');
@@ -26,7 +25,6 @@ export default function ModalForm() {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
                 setSource('');
-                setDescription('');
                 setDateFrom('');
                 setDateTo('');
                 setDestinations('');
@@ -58,7 +56,6 @@ export default function ModalForm() {
                 },
                 body: JSON.stringify({
                     source,
-                    description,
                     destinations: destinations.split(',').map((item: string) => item.trim()),
                     dateFrom,
                     dateTo,
@@ -86,7 +83,6 @@ export default function ModalForm() {
      */
     const clearFields = () => {
         setSource('');
-        setDescription('');
         setDateFrom('');
         setDateTo('');
         setDestinations('');

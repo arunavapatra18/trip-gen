@@ -13,7 +13,8 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import CustomSignInButton from "./auth/sign-in-button";
+import CustomSignInButton from "./components/sign-in-button";
+import CustomSignUpButton from "./components/sign-up-button";
 
 export async function loader(args:Route.LoaderArgs) {
   return rootAuthLoader(args)
@@ -74,6 +75,7 @@ export default function App({loaderData} : Route.ComponentProps) {
         </SignedIn>
         <SignedOut>
           <CustomSignInButton />
+          <CustomSignUpButton />
         </SignedOut>
         </div>
       </header>
