@@ -49,7 +49,7 @@ export default function ModalForm() {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://example.com/api/trips', {
+            const response = await fetch('http://127.0.0.1:5000/api/trips', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

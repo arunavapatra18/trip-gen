@@ -1,11 +1,13 @@
 # routes.py
 from flask import Blueprint, request, jsonify
 from llm_model import send_data_to_llm
+
 # Create a blueprint to organize the routes
-trip_bp = Blueprint('trip', __name__)
+trip_bp = Blueprint("trip", __name__)
+
 
 # Define the /generate_trip route to handle POST requests
-@trip_bp.route('/trips', methods=['POST'])
+@trip_bp.route("/trips", methods=["POST"])
 def generate_trip():
     # Extract data from the incoming JSON request
     data = request.get_json()
@@ -18,14 +20,27 @@ def generate_trip():
     # Validate required fields
     if not data:
         return jsonify({"error": "No data provided"}), 400
-    
-    required_fields = [ 'source', 'destinations', 'dateForm','dateto', 'days', 'travellers', 'additionalQuery']
-    
-    date = data.get('date', None)  # If 'date' is not provided, it defaults to None
+
+    required_fields = [
+        "source",
+        "destinations",
+        "dateForm",
+        "dateto",
+        "days",
+        "travellers",
+        "additionalQuery",
+    ]
+
+    date = data.get("date", None)  # If 'date' is not provided, it defaults to None
 
     # Response to return
-    return jsonify({
-        "status": "success",
-        "message": "Trip generated successfully",
-        "trip_data": meta_data
-    }), 201
+    return (
+        jsonify(
+            {
+                "status": "success",
+                "message": "Trip generated successfully",
+                "trip_data": meta_data,
+            }
+        ),
+        201,
+    )
