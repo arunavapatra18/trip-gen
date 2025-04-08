@@ -1,3 +1,7 @@
+import { rootAuthLoader } from "@clerk/react-router/ssr.server";
+import { SignedIn, SignedOut, UserButton } from "@clerk/react-router";
+import { ClerkProvider } from "@clerk/clerk-react";
+
 import {
   isRouteErrorResponse,
   Links,
@@ -9,6 +13,12 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import CustomSignInButton from "./components/sign-in-button";
+import CustomSignUpButton from "./components/sign-up-button";
+
+export async function loader(args:Route.LoaderArgs) {
+  return rootAuthLoader(args)
+}
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -41,8 +51,39 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
-  return <Outlet />;
+export default function App({loaderData} : Route.ComponentProps) {
+  return (
+    <ClerkProvider
+      loaderData={loaderData}
+      signInUrl="/signin"
+      signUpUrl="/signup"
+      signInFallbackRedirectUrl="/dashboard"
+      signUpFallbackRedirectUrl="/dashboard"
+      afterSignOutUrl="/signin"
+      publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY!}
+      routing='path'
+    >
+      <header className="flex justify-between items-center py-4 px-8">
+        <div>
+          <a href="/">
+          YetAnotherTripPlanner
+          </a>
+        </div>
+        <div>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+        <SignedOut>
+          <CustomSignInButton />
+          <CustomSignUpButton />
+        </SignedOut>
+        </div>
+      </header>
+      <main>
+      <Outlet />
+      </main>
+    </ClerkProvider>
+  )
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
