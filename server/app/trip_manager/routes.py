@@ -1,4 +1,4 @@
-# routes.py
+from database import add_trip
 from flask import Blueprint, request, jsonify
 from llm_model import send_data_to_llm
 
@@ -7,7 +7,7 @@ trip_bp = Blueprint("trip", __name__)
 
 
 # Define the /generate_trip route to handle POST requests
-@trip_bp.route("/trips", methods=["POST"])
+@trip_bp.route("/generate_trip", methods=["POST"])
 def generate_trip():
     # Extract data from the incoming JSON request
     data = request.get_json()
@@ -28,11 +28,11 @@ def generate_trip():
         "dateto",
         "days",
         "travellers",
-        "additionalQuery",
     ]
 
     date = data.get("date", None)  # If 'date' is not provided, it defaults to None
 
+    add_trip(meta_data)
     # Response to return
     return (
         jsonify(
