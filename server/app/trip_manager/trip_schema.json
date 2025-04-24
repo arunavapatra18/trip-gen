@@ -1,0 +1,87 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "http://github.com/arunavapatra18/trip-gen/schemas/trip_schema.json",
+    "title": "LLM Response",
+    "description": "A openrouter llm response",
+    "type": "object",
+    "properties": {
+        "title": {
+            "description": "Title of the trip",
+            "type": "string"
+        },
+        "destinations": {
+            "description": "Major destinations",
+            "type": "string"
+        },
+        "startDate": {
+            "description": "Trip start date",
+            "type": "string"
+        },
+        "endDate": {
+            "description": "Trip end date",
+            "type": "string"
+        },
+        "coverImage": {
+            "description": "Trip image",
+            "type": "string"
+        },
+        "days": {
+            "description": "A list of trip days, each containing a date and associated activities.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "description": "The calendar date for the day's itinerary, e.g., 'October 15, 2023'."
+                    },
+                    "activities": {
+                        "type": "array",
+                        "description": "A list of scheduled activities for the given date.",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "time": {
+                                    "type": "string",
+                                    "description": "The time the activity starts, formatted as 'HH:MM AM/PM'."
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "description": "A short title or summary of the activity."
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "A detailed explanation of what the activity involves."
+                                },
+                                "imageUrl": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "description": "An optional URL pointing to an image representing the activity."
+                                }
+                            },
+                            "required": [
+                                "time",
+                                "title",
+                                "description"
+                            ],
+                            "description": "Details of an individual activity within a day's itinerary."
+                        }
+                    }
+                },
+                "required": [
+                    "date",
+                    "activities"
+                ],
+                "description": "Day's activities"
+            }
+        }
+    },
+    "required": [
+        "title",
+        "destinations",
+        "startDate",
+        "endDate",
+        "coverImage",
+        "days"
+    ]
+}

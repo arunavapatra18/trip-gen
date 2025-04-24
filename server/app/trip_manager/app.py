@@ -7,6 +7,12 @@ from routes import trip_bp
 
 
 def create_app():
+    """
+    Creates and configures the Flask application.
+
+    Returns:
+        app: The configured Flask application.
+    """
     app = Flask(__name__)
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///trips.db"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -26,4 +32,4 @@ def create_app():
 # Run the Flask application
 if __name__ == "__main__":
     app = create_app()
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
