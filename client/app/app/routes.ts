@@ -9,6 +9,6 @@ export default [
     ...prefix("trips", [
         index("./trips/trips.tsx"),
         route(":trip", "./trips/trip.tsx"),
-        route('new_trip/*', 'trips/new_trip.tsx'),
+        route('new_trip', 'trips/new_trip.tsx'),
     ]),
 ] satisfies RouteConfig;

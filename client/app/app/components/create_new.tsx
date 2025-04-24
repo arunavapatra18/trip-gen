@@ -1,4 +1,6 @@
+import { CirclePlus} from "lucide-react";
 import { useNavigate } from "react-router";
+
 
 export default function CreateNewButton() {
     const navigate = useNavigate();
@@ -10,10 +12,8 @@ export default function CreateNewButton() {
                     navigate("/trips/new_trip")
                 }}
             >
-                <div className="card-body justify-center">
-                    <div className="border-4 border-gray-500 rounded-full size-20 text-center mr-auto ml-auto">
-                            <span className="text-7xl text-gray-500">+</span>
-                    </div>
+                <div className="card-body justify-center items-center cursor-pointer">
+                    <CirclePlus size={100}/>
                     <h2 className="card-title justify-center">Create New Trip</h2>
                 </div>
             </button>

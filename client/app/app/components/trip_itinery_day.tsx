@@ -1,11 +1,11 @@
-import { CalendarDaysIcon } from "lucide-react";
+import { Activity, CalendarDaysIcon } from "lucide-react";
 import TripItineryActivity from "./trip_itinery_activity";
 import type { JSX } from "react";
 
 interface TripItineryDayProps {
     dayNumber: number,
     date: string,
-    activities: string[]
+    activities: []
 }
 
 const TripItineryDay = ({
@@ -24,7 +24,9 @@ const TripItineryDay = ({
                 </div>
                 <div className="p-4">
                     <div className="space-y-6">
-                            <TripItineryActivity title="Arrival at Narita International Airport" description="Flight NH203 arrives. Proceed through immigration and collect baggage." isLast={false} imageUrl="/bg_main.jpg" time="09:00 AM"/>
+                        {activities.map((activity, index) => (
+                             <TripItineryActivity title={activity.title} description={activity.description} isLast={index === activities.length - 1} imageUrl="/bg_main.jpg" time={activity.time}/>
+                        ))}
                     </div>
                 </div>
             </div>
