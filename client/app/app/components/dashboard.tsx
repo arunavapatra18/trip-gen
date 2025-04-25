@@ -13,7 +13,9 @@ export default function DashboardComponent() {
                     >
                     <h1>Plan your next travel</h1>
                 </div>
-                <a href="https://www.freepik.com/" className="text-xs text-right">Beach Vectors by <span className="text-blue-500">Freepik</span></a>
+                <div className="flex justify-end">
+                    <a href="https://www.freepik.com/" className="max-w-fit text-xs justify-end">Beach Vectors by <span className="text-blue-500">Freepik</span></a>
+                </div>
                 <div className="flex flex-wrap gap-7 pt-10 w-full max-sm:justify-center">
                     <CreateNewButton />
                     <TripCard />

@@ -49,7 +49,7 @@ export default function ModalForm() {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/trips', {
+            const response = await fetch('http://127.0.0.1:5000/api/generate_trip', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -92,111 +92,107 @@ export default function ModalForm() {
     };
 
     return (
-        <dialog id="form_modal" className="modal">
-            <div className="modal-box">
-                <form method="dialog" onSubmit={handleSubmit}>
+        <div className="sm:w-100 my-10 mx-auto max-sm:mx-5">
+            <form onSubmit={handleSubmit}>
+                <h1 className="font-bold text-2xl">New Trip</h1>
+
+                <div className="mt-4">
+                    <label className="block mb-1">Source</label>
+                    <input
+                        type="text"
+                        name="source"
+                        className="input input-bordered w-full"
+                        value={source}
+                        onChange={(e) => setSource(e.target.value)}
+                        required
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <label className="block mb-1">Destinations</label>
+                    <input
+                        type="text"
+                        name="destinations"
+                        className="input input-bordered w-full"
+                        value={destinations}
+                        onChange={(e) => setDestinations(e.target.value)}
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <label className="block mb-1">Start Date - End Date (Optional)</label>
+                    <div className="flex">
+                        <input
+                            type="date"
+                            name="dateFrom"
+                            className="input input-bordered w-1/2 mr-2"
+                            value={dateFrom}
+                            onChange={(e) => setDateFrom(e.target.value)}
+                            min={new Date().toISOString().split('T')[0]}
+                        />
+                        <input
+                            type="date"
+                            name="dateTo"
+                            className="input input-bordered w-1/2"
+                            value={dateTo}
+                            onChange={(e) => setDateTo(e.target.value)}
+                            min={new Date().toISOString().split('T')[0]}
+                        />
+                    </div>
+                </div>
+
+                <div className="mt-4">
+                    <label className="block mb-1">Days</label>
+                    <input
+                        type="number"
+                        name="days"
+                        className="input input-bordered w-full"
+                        value={days}
+                        onChange={(e) => setDays(e.target.value)}
+                        min="1"
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <label className="block mb-1">Number of Travellers</label>
+                    <input
+                        type="number"
+                        name="travellers"
+                        className="input input-bordered w-full"
+                        value={travellers}
+                        onChange={(e) => setTravellers(e.target.value)}
+                        min="1"
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <label className="block mb-1">Additional Query</label>
+                    <textarea
+                        name="additionalQuery"
+                        className="textarea textarea-bordered w-full"
+                        value={additionalQuery}
+                        onChange={(e) => setAdditionalQuery(e.target.value)}
+                    />
+                </div>
+
+                <div className="flex justify-end mt-4 items-center">
+                <button
+                    type="button"
+                    className="btn btn-sm btn-ghost mr-5"
+                    onClick={() => {
+                        clearFields();
+                    }}
+                >
+                    Clear Form
+                </button>
                     <button
-                        type="button"
-                        className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                        onClick={() => {
-                            (document.getElementById('form_modal') as HTMLDialogElement)?.close();
-                            clearFields();
-                        }}
+                        type="submit"
+                        className="btn btn-primary"
                     >
-                        ✕
+                        Generate!
                     </button>
-
-                    <h1 className="font-bold text-2xl">New Trip</h1>
-
-                    <div className="mt-4">
-                        <label className="block mb-1">Source</label>
-                        <input
-                            type="text"
-                            name="source"
-                            className="input input-bordered w-full"
-                            value={source}
-                            onChange={(e) => setSource(e.target.value)}
-                            required
-                        />
-                    </div>
-
-                    <div className="mt-4">
-                        <label className="block mb-1">Destinations</label>
-                        <input
-                            type="text"
-                            name="destinations"
-                            className="input input-bordered w-full"
-                            value={destinations}
-                            onChange={(e) => setDestinations(e.target.value)}
-                        />
-                    </div>
-
-                    <div className="mt-4">
-                        <label className="block mb-1">Start Date - End Date (Optional)</label>
-                        <div className="flex">
-                            <input
-                                type="date"
-                                name="dateFrom"
-                                className="input input-bordered w-1/2 mr-2"
-                                value={dateFrom}
-                                onChange={(e) => setDateFrom(e.target.value)}
-                                min={new Date().toISOString().split('T')[0]}
-                            />
-                            <input
-                                type="date"
-                                name="dateTo"
-                                className="input input-bordered w-1/2"
-                                value={dateTo}
-                                onChange={(e) => setDateTo(e.target.value)}
-                                min={new Date().toISOString().split('T')[0]}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="mt-4">
-                        <label className="block mb-1">Days</label>
-                        <input
-                            type="number"
-                            name="days"
-                            className="input input-bordered w-full"
-                            value={days}
-                            onChange={(e) => setDays(e.target.value)}
-                            min="1"
-                        />
-                    </div>
-
-                    <div className="mt-4">
-                        <label className="block mb-1">Number of Travellers</label>
-                        <input
-                            type="number"
-                            name="travellers"
-                            className="input input-bordered w-full"
-                            value={travellers}
-                            onChange={(e) => setTravellers(e.target.value)}
-                            min="1"
-                        />
-                    </div>
-
-                    <div className="mt-4">
-                        <label className="block mb-1">Additional Query</label>
-                        <textarea
-                            name="additionalQuery"
-                            className="textarea textarea-bordered w-full"
-                            value={additionalQuery}
-                            onChange={(e) => setAdditionalQuery(e.target.value)}
-                        />
-                    </div>
-
-                    <div className="flex justify-end mt-4">
-                        <button
-                            type="submit"
-                            className="btn btn-primary"
-                        >
-                            Generate!
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </dialog>
+                </div>
+            </form>
+        </div>
     );
 }

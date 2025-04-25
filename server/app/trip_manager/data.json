@@ -1,0 +1,320 @@
+{
+    "coverImage": "https://example.com/japan_cover.jpg",
+    "days": [
+        {
+            "activities": [
+                {
+                    "description": "Depart from Bangalore International Airport (BLR) on a flight to Narita International Airport (NRT).",
+                    "imageUrl": "https://example.com/bangalore_airport.jpg",
+                    "time": "08:00 AM",
+                    "title": "Departure from Bangalore"
+                }
+            ],
+            "date": "May 18, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Arrive at Narita International Airport (NRT). Transfer to your hotel in Tokyo (Shinjuku area). Check in and leave your luggage.",
+                    "imageUrl": "https://example.com/narita_airport.jpg",
+                    "time": "06:00 PM",
+                    "title": "Arrival in Tokyo & Hotel Check-in"
+                },
+                {
+                    "description": "Explore Shinjuku Gyoen National Garden, a tranquil oasis amidst the bustling city.",
+                    "imageUrl": "https://example.com/shinjuku_gyoen.jpg",
+                    "time": "07:30 PM",
+                    "title": "Shinjuku Gyoen Garden"
+                },
+                {
+                    "description": "Enjoy dinner at Robot Restaurant in Shinjuku for a unique and over-the-top performance.",
+                    "imageUrl": "https://example.com/robot_restaurant.jpg",
+                    "time": "09:00 PM",
+                    "title": "Dinner at Robot Restaurant"
+                }
+            ],
+            "date": "May 19, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Visit the Tsukiji Outer Market for a delicious seafood breakfast and explore the variety of food stalls.",
+                    "imageUrl": "https://example.com/tsukiji_market.jpg",
+                    "time": "08:00 AM",
+                    "title": "Tsukiji Outer Market"
+                },
+                {
+                    "description": "Visit the Imperial Palace East Garden, the former site of Edo Castle.",
+                    "imageUrl": "https://example.com/imperial_palace.jpg",
+                    "time": "11:00 AM",
+                    "title": "Imperial Palace East Garden"
+                },
+                {
+                    "description": "Explore the Ginza district, known for its high-end shopping and elegant atmosphere.",
+                    "imageUrl": "https://example.com/ginza_district.jpg",
+                    "time": "02:00 PM",
+                    "title": "Ginza Exploration"
+                },
+                {
+                    "description": "Dinner at a traditional Izakaya in Ginza.",
+                    "imageUrl": "https://example.com/izakaya.jpg",
+                    "time": "07:00 PM",
+                    "title": "Izakaya Dinner"
+                }
+            ],
+            "date": "May 20, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Take a day trip to Hakone, a mountain resort town known for its natural beauty and views of Mount Fuji.",
+                    "imageUrl": "https://example.com/hakone.jpg",
+                    "time": "09:00 AM",
+                    "title": "Hakone Day Trip"
+                },
+                {
+                    "description": "Cruise across Lake Ashi, surrounded by stunning scenery.",
+                    "imageUrl": "https://example.com/lake_ashi.jpg",
+                    "time": "11:00 AM",
+                    "title": "Lake Ashi Cruise"
+                },
+                {
+                    "description": "Ride the Hakone Ropeway, offering panoramic views and passing over volcanic hot springs.",
+                    "imageUrl": "https://example.com/hakone_ropeway.jpg",
+                    "time": "01:00 PM",
+                    "title": "Hakone Ropeway"
+                },
+                {
+                    "description": "Visit the Hakone Open-Air Museum, showcasing contemporary sculptures against the backdrop of nature.",
+                    "imageUrl": "https://example.com/hakone_museum.jpg",
+                    "time": "03:00 PM",
+                    "title": "Hakone Open-Air Museum"
+                },
+                {
+                    "description": "Enjoy dinner at a local restaurant in Hakone.",
+                    "imageUrl": "https://example.com/hakone_restaurant.jpg",
+                    "time": "07:00 PM",
+                    "title": "Hakone Dinner"
+                }
+            ],
+            "date": "May 21, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Take the Shinkansen (bullet train) to Kyoto.",
+                    "imageUrl": "https://example.com/shinkansen.jpg",
+                    "time": "09:00 AM",
+                    "title": "Travel to Kyoto by Shinkansen"
+                },
+                {
+                    "description": "Check in to your hotel in Kyoto.",
+                    "imageUrl": "https://example.com/kyoto_hotel.jpg",
+                    "time": "12:00 PM",
+                    "title": "Hotel Check-in Kyoto"
+                },
+                {
+                    "description": "Visit Fushimi Inari Shrine with its thousands of vibrant red torii gates.",
+                    "imageUrl": "https://example.com/fushimi_inari.jpg",
+                    "time": "02:00 PM",
+                    "title": "Fushimi Inari Shrine"
+                },
+                {
+                    "description": "Dinner in Gion district known for geishas.",
+                    "imageUrl": "https://example.com/gion_dinner.jpg",
+                    "time": "07:00 PM",
+                    "title": "Dinner in Gion"
+                }
+            ],
+            "date": "May 22, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Visit Kinkaku-ji (Golden Pavilion), a stunning Zen Buddhist temple covered in gold leaf.",
+                    "imageUrl": "https://example.com/kinkakuji.jpg",
+                    "time": "09:00 AM",
+                    "title": "Kinkaku-ji (Golden Pavilion)"
+                },
+                {
+                    "description": "Explore Ryoan-ji Temple, famous for its enigmatic rock garden.",
+                    "imageUrl": "https://example.com/ryoanji.jpg",
+                    "time": "11:00 AM",
+                    "title": "Ryoan-ji Temple"
+                },
+                {
+                    "description": "Walk through the Arashiyama Bamboo Grove, a magical path surrounded by towering bamboo stalks.",
+                    "imageUrl": "https://example.com/arashiyama_bamboo.jpg",
+                    "time": "02:00 PM",
+                    "title": "Arashiyama Bamboo Grove"
+                },
+                {
+                    "description": "Traditional Kaiseki dinner.",
+                    "imageUrl": "https://example.com/kaiseki.jpg",
+                    "time": "07:00 PM",
+                    "title": "Kaiseki Dinner"
+                }
+            ],
+            "date": "May 23, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Day trip to Nara Park, famous for its friendly wild deer roaming freely.",
+                    "imageUrl": "https://example.com/nara_park.jpg",
+                    "time": "09:00 AM",
+                    "title": "Nara Park"
+                },
+                {
+                    "description": "Visit Todai-ji Temple, housing a giant bronze Buddha statue.",
+                    "imageUrl": "https://example.com/todaiji.jpg",
+                    "time": "11:00 AM",
+                    "title": "Todai-ji Temple"
+                },
+                {
+                    "description": "Explore Kasuga Taisha Shrine, known for its thousands of stone and bronze lanterns.",
+                    "imageUrl": "https://example.com/kasuga_taisha.jpg",
+                    "time": "02:00 PM",
+                    "title": "Kasuga Taisha Shrine"
+                },
+                {
+                    "description": "Dinner in Nara.",
+                    "imageUrl": "https://example.com/nara_dinner.jpg",
+                    "time": "07:00 PM",
+                    "title": "Nara Dinner"
+                }
+            ],
+            "date": "May 24, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Return to Osaka from Nara. Visit Osaka Castle.",
+                    "imageUrl": "https://example.com/osaka_castle.jpg",
+                    "time": "09:00 AM",
+                    "title": "Travel to Osaka & Osaka Castle"
+                },
+                {
+                    "description": "Explore Dotonbori, Osaka's vibrant entertainment district known for its street food and bright lights.",
+                    "imageUrl": "https://example.com/dotonbori.jpg",
+                    "time": "02:00 PM",
+                    "title": "Dotonbori Exploration"
+                },
+                {
+                    "description": "Dinner and streetfood in Dotonbori.",
+                    "imageUrl": "https://example.com/dotonbori_dinner.jpg",
+                    "time": "07:00 PM",
+                    "title": "Dotonbori Dinner"
+                }
+            ],
+            "date": "May 25, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Visit the Umeda Sky Building for panoramic views of Osaka from the Floating Garden Observatory.",
+                    "imageUrl": "https://example.com/umeda_sky_building.jpg",
+                    "time": "10:00 AM",
+                    "title": "Umeda Sky Building"
+                },
+                {
+                    "description": "Explore Shinsekai, a retro district with a nostalgic atmosphere and famous for its Kushikatsu eateries.",
+                    "imageUrl": "https://example.com/shinsekai.jpg",
+                    "time": "01:00 PM",
+                    "title": "Shinsekai"
+                },
+                {
+                    "description": "Dinner and street food in Shinsekai.",
+                    "imageUrl": "https://example.com/shinsekai_dinner.jpg",
+                    "time": "07:00 PM",
+                    "title": "Shinsekai Dinner"
+                }
+            ],
+            "date": "May 26, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Take the Shinkansen back to Tokyo.",
+                    "imageUrl": "https://example.com/shinkansen.jpg",
+                    "time": "09:00 AM",
+                    "title": "Travel to Tokyo by Shinkansen"
+                },
+                {
+                    "description": "Explore the Shibuya crossing, the world's busiest intersection, and see the Hachiko statue.",
+                    "imageUrl": "https://example.com/shibuya_crossing.jpg",
+                    "time": "02:00 PM",
+                    "title": "Shibuya Crossing & Hachiko"
+                },
+                {
+                    "description": "Dinner in Shibuya.",
+                    "imageUrl": "https://example.com/shibuya_dinner.jpg",
+                    "time": "07:00 PM",
+                    "title": "Shibuya Dinner"
+                }
+            ],
+            "date": "May 27, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Visit the Ghibli Museum (reservations required well in advance).",
+                    "imageUrl": "https://example.com/ghibli_museum.jpg",
+                    "time": "10:00 AM",
+                    "title": "Ghibli Museum"
+                },
+                {
+                    "description": "Explore Harajuku, known for its unique street style, colorful shops, and Takeshita Street.",
+                    "imageUrl": "https://example.com/harajuku.jpg",
+                    "time": "02:00 PM",
+                    "title": "Harajuku Exploration"
+                },
+                {
+                    "description": "Dinner in Harajuku.",
+                    "imageUrl": "https://example.com/harajuku_dinner.jpg",
+                    "time": "07:00 PM",
+                    "title": "Harajuku Dinner"
+                }
+            ],
+            "date": "May 28, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Attend a Sumo Wrestling practice session (if available, book in advance).",
+                    "imageUrl": "https://example.com/sumo_wrestling.jpg",
+                    "time": "08:00 AM",
+                    "title": "Sumo Wrestling Practice"
+                },
+                {
+                    "description": "Explore the Akihabara district, known as the electric town and for its anime and manga culture.",
+                    "imageUrl": "https://example.com/akihabara.jpg",
+                    "time": "01:00 PM",
+                    "title": "Akihabara Exploration"
+                },
+                {
+                    "description": "Farewell Dinner in Akihabara.",
+                    "imageUrl": "https://example.com/akihabara_dinner.jpg",
+                    "time": "07:00 PM",
+                    "title": "Akihabara Farewell Dinner"
+                }
+            ],
+            "date": "May 29, 2025"
+        },
+        {
+            "activities": [
+                {
+                    "description": "Transfer to Narita International Airport (NRT) for your flight back to Bangalore.",
+                    "imageUrl": "https://example.com/narita_airport.jpg",
+                    "time": "10:00 AM",
+                    "title": "Departure from Tokyo"
+                }
+            ],
+            "date": "May 30, 2025"
+        }
+    ],
+    "destinations": "Tokyo, Kyoto, Osaka, Nara, Hakone",
+    "endDate": "2025-05-30",
+    "startDate": "2025-05-18",
+    "title": "13-Day Japan Adventure: Bangalore to Tokyo, Kyoto, Osaka & Beyond"
+}
