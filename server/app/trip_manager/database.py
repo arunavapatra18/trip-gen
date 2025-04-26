@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -11,7 +12,18 @@ class Trip(db.Model):
     __tablename__ = "trips"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    trip = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.String, nullable=False)
+    source = db.Column(db.String, nullable=False)
+    destination = db.Column(db.String, nullable=False)
+    start_date = db.Column(db.String, nullable=False)
+    end_date = db.Column(db.String, nullable=False)
+    days_count = db.Column(db.Integer, nullable=False)
+    pax = db.Column(db.Integer, nullable=False)
+    trip_json = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now(timezone.utc))
+
+    def __repr__(self):
+        return f"<Trip {self.id} - {self.source} TO {self.destination}>"
 
 
 def save_to_db(instance):
@@ -25,7 +37,7 @@ def save_to_db(instance):
     db.session.commit()
 
 
-def add_trip(trip_data: str):
+def add_trip(trip_db_data: Trip):
     """
     Adds a new trip to the database.
 
@@ -35,7 +47,7 @@ def add_trip(trip_data: str):
     Returns:
         str: A message indicating that the trip has been added.
     """
-    trip = Trip(trip=trip_data)
+    trip = trip_db_data
     save_to_db(trip)
     return f"Added trip"
 

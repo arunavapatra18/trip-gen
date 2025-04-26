@@ -2,7 +2,7 @@ import requests
 import json
 from dotenv import load_dotenv
 import os
-from config import api_key
+from .config import api_key
 
 # Load trip schema
 with open("trip_schema.json", "r") as f:

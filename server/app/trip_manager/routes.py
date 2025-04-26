@@ -1,7 +1,7 @@
 import json
-from database import add_trip, get_all_trips, get_trip
+from .database import Trip, add_trip, get_all_trips, get_trip
 from flask import Blueprint, Response, request, jsonify
-from llm_model import generate_trip_from_llm
+from .llm_model import generate_trip_from_llm
 
 # Create a blueprint to organize the routes
 trip_bp = Blueprint("trip", __name__)
@@ -11,11 +11,6 @@ trip_bp = Blueprint("trip", __name__)
 def generate_trip() -> Response:
     """
     Generate a new trip plan based on user-provided details.
-
-    Receives a JSON payload containing trip details such as source, destinations,
-    dates, duration, and number of travelers.  Generates a realistic daily
-    itinerary with locations, meals, and activities, varying each day and
-    including times and short descriptions.
 
     Returns:
         Response: A JSON response containing the status, message, and trip data
@@ -30,14 +25,24 @@ def generate_trip() -> Response:
                 Dates: {data['dateFrom']} to {data['dateTo']} | Duration: {data['days']} days | Travelers: {data['travellers']}  \
                 Generate a realistic daily itinerary with locations, meals, and activities. Vary each day, include times and short descriptions."
 
-    ################# LLM API CALL + STORE IN DB ####################
-    # llm_response = generate_trip_from_llm(message)
+    llm_response = generate_trip_from_llm(message)
+    # with open("data.json", "r") as f:
+    #     llm_response = json.load(f)
 
-    # add_trip(llm_response)
-    #################################################################
+    print(request.headers)
 
-    with open("data.json", "r") as f:
-        llm_response = json.load(f)
+    trip_db_store = Trip(
+        user_id=1,
+        source=data["source"],
+        destination=data["destinations"][0],
+        start_date=data["dateFrom"],
+        end_date=data["dateTo"],
+        days_count=data["days"],
+        pax=data["travellers"],
+        trip_json=json.dumps(llm_response),
+    )
+
+    add_trip(trip_db_data=trip_db_store)
 
     return (
         jsonify(
