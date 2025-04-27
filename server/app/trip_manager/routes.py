@@ -1,4 +1,6 @@
 import json
+
+from .auth import require_auth
 from .database import Trip, add_trip, get_all_trips, get_trip
 from flask import Blueprint, Response, request, jsonify
 from .llm_model import generate_trip_from_llm
@@ -8,7 +10,8 @@ trip_bp = Blueprint("trip", __name__)
 
 
 @trip_bp.route("/generate_trip", methods=["POST"])
-def generate_trip() -> Response:
+@require_auth
+def generate_trip(user_id: str) -> Response:
     """
     Generate a new trip plan based on user-provided details.
 
@@ -29,10 +32,8 @@ def generate_trip() -> Response:
     # with open("data.json", "r") as f:
     #     llm_response = json.load(f)
 
-    print(request.headers)
-
     trip_db_store = Trip(
-        user_id=1,
+        user_id=user_id,
         source=data["source"],
         destination=data["destinations"][0],
         start_date=data["dateFrom"],
@@ -57,6 +58,7 @@ def generate_trip() -> Response:
 
 
 @trip_bp.route("/get_trips/<int:trip_id>", methods=["GET"])
+@require_auth
 def get_trip_by_id(trip_id: int):
     """
     Retrieve a specific trip by its ID.
@@ -77,6 +79,7 @@ def get_trip_by_id(trip_id: int):
 
 
 @trip_bp.route("/get_trips", methods=["GET"])
+@require_auth
 def get_trips():
     """
     Retrieve all trips.
