@@ -10,7 +10,7 @@ const TripItineryList = ({
     return (
         <div className="space-y-8">
             {days.map((day, index) => (
-                <TripItineryDay date={day.date} dayNumber={index+1} activities={day.activities}/>
+                <TripItineryDay key={index} date={day.date} dayNumber={index+1} activities={day.activities}/>
             ))}
         </div>
     )

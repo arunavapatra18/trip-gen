@@ -1,6 +1,7 @@
 import { rootAuthLoader } from "@clerk/react-router/ssr.server";
 import { SignedIn, SignedOut, UserButton } from "@clerk/react-router";
-import { ClerkProvider } from "@clerk/clerk-react";
+import { ClerkProvider, useAuth } from "@clerk/clerk-react";
+import { useEffect } from "react";
 
 import {
   isRouteErrorResponse,
@@ -15,6 +16,18 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import CustomSignInButton from "./components/sign-in-button";
 import CustomSignUpButton from "./components/sign-up-button";
+import { initializeApiClient } from "./services/apiClient";
+
+const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
+const InterceptorSetup = () => {
+  const { getToken } = useAuth();
+
+  useEffect(() => {
+    initializeApiClient(getToken);
+  }, [getToken]);
+  return null;
+}
 
 export async function loader(args:Route.LoaderArgs) {
   return rootAuthLoader(args)
@@ -60,9 +73,10 @@ export default function App({loaderData} : Route.ComponentProps) {
       signInFallbackRedirectUrl="/dashboard"
       signUpFallbackRedirectUrl="/dashboard"
       afterSignOutUrl="/signin"
-      publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY!}
+      publishableKey={clerkPubKey}
       routing='path'
     >
+      <InterceptorSetup />
       <header className="flex justify-between items-center py-4 px-8">
         <div>
           <a href="/">

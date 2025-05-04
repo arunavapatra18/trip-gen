@@ -1,3 +1,5 @@
+from datetime import datetime, timezone
+import json
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -11,7 +13,18 @@ class Trip(db.Model):
     __tablename__ = "trips"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    trip = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.String, nullable=False)
+    source = db.Column(db.String, nullable=False)
+    destination = db.Column(db.String, nullable=False)
+    start_date = db.Column(db.String, nullable=False)
+    end_date = db.Column(db.String, nullable=False)
+    days_count = db.Column(db.Integer, nullable=False)
+    pax = db.Column(db.Integer, nullable=False)
+    trip_json = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.now(timezone.utc))
+
+    def __repr__(self):
+        return f"<Trip {self.id} - {self.source} TO {self.destination}>"
 
 
 def save_to_db(instance):
@@ -25,7 +38,7 @@ def save_to_db(instance):
     db.session.commit()
 
 
-def add_trip(trip_data: str):
+def add_trip(trip_db_data: Trip):
     """
     Adds a new trip to the database.
 
@@ -35,12 +48,12 @@ def add_trip(trip_data: str):
     Returns:
         str: A message indicating that the trip has been added.
     """
-    trip = Trip(trip=trip_data)
+    trip = trip_db_data
     save_to_db(trip)
     return f"Added trip"
 
 
-def get_trip(trip_id: int):
+def get_trip(user_id: str, trip_id: int):
     """
     Retrieves a specific trip from the database by its ID.
 
@@ -51,13 +64,15 @@ def get_trip(trip_id: int):
         JSON: A JSON response containing the trip data if found,
                  or None if the trip is not found.
     """
-    trip = db.session.get(Trip, trip_id)
+    trip = db.session.execute(
+        select(Trip).where(Trip.id == trip_id, Trip.user_id == user_id)
+    ).scalar_one_or_none()
     if trip:
-        return jsonify({"id": trip.id, "trip": trip.trip})
+        return jsonify({"trip": json.loads(trip.trip_json)})
     return None
 
 
-def get_all_trips():
+def get_all_trips(user_id: str):
     """
     Retrieves all trips from the database.
 
@@ -65,8 +80,20 @@ def get_all_trips():
         JSON: A JSON response containing all trip data if found,
                  or None if no trips are found.
     """
-    statement = select(Trip.trip)
-    trips = db.session.scalars(statement).all()
+    statement = select(Trip.id, Trip.source, Trip.destination, Trip.days_count).where(
+        Trip.user_id == user_id
+    )
+    trips = db.session.execute(statement).all()
+    print(trips, type(trips))
     if trips:
-        return jsonify({"trips": trips})
+        trips_list = [
+            {
+                "id": trip.id,
+                "source": trip.source,
+                "destination": trip.destination,
+                "days_count": trip.days_count,
+            }
+            for trip in trips
+        ]
+        return jsonify({"trips": trips_list})
     return None
