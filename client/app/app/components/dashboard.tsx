@@ -18,7 +18,7 @@ export default function DashboardComponent() {
                 </div>
                 <div className="flex flex-wrap gap-7 pt-10 w-full max-sm:justify-center">
                     <CreateNewButton />
-                    <TripCard />
+                    
                 </div>
             </div>
         </main>

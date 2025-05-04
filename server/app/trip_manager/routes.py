@@ -59,7 +59,7 @@ def generate_trip(user_id: str) -> Response:
 
 @trip_bp.route("/get_trips/<int:trip_id>", methods=["GET"])
 @require_auth
-def get_trip_by_id(trip_id: int):
+def get_trip_by_id(user_id: str, trip_id: int):
     """
     Retrieve a specific trip by its ID.
 
@@ -70,9 +70,7 @@ def get_trip_by_id(trip_id: int):
         Response: A JSON response containing the trip data if found,
                   or an error message with a 404 status code if not found.
     """
-    with open("data.json", "r") as f:
-        llm_response = json.load(f)
-    trip = jsonify(llm_response)
+    trip = get_trip(user_id=user_id, trip_id=trip_id)
     if trip:
         return trip
     return jsonify({"error": "Trip not found"}), 404
@@ -80,7 +78,7 @@ def get_trip_by_id(trip_id: int):
 
 @trip_bp.route("/get_trips", methods=["GET"])
 @require_auth
-def get_trips():
+def get_trips(user_id: str):
     """
     Retrieve all trips.
 
@@ -88,7 +86,7 @@ def get_trips():
         Response: A JSON response containing all trip data if found,
                   or an error message with a 404 status code if not found.
     """
-    trip = get_all_trips()
+    trip = get_all_trips(user_id)
     if trip:
         return trip
     return jsonify({"error": "Trip not found"}), 404

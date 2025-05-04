@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+import json
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -52,7 +53,7 @@ def add_trip(trip_db_data: Trip):
     return f"Added trip"
 
 
-def get_trip(trip_id: int):
+def get_trip(user_id: str, trip_id: int):
     """
     Retrieves a specific trip from the database by its ID.
 
@@ -63,13 +64,15 @@ def get_trip(trip_id: int):
         JSON: A JSON response containing the trip data if found,
                  or None if the trip is not found.
     """
-    trip = db.session.get(Trip, trip_id)
+    trip = db.session.execute(
+        select(Trip).where(Trip.id == trip_id, Trip.user_id == user_id)
+    ).scalar_one_or_none()
     if trip:
-        return jsonify({"id": trip.id, "trip": trip.trip})
+        return jsonify({"trip": json.loads(trip.trip_json)})
     return None
 
 
-def get_all_trips():
+def get_all_trips(user_id: str):
     """
     Retrieves all trips from the database.
 
@@ -77,8 +80,20 @@ def get_all_trips():
         JSON: A JSON response containing all trip data if found,
                  or None if no trips are found.
     """
-    statement = select(Trip.trip)
-    trips = db.session.scalars(statement).all()
+    statement = select(Trip.id, Trip.source, Trip.destination, Trip.days_count).where(
+        Trip.user_id == user_id
+    )
+    trips = db.session.execute(statement).all()
+    print(trips, type(trips))
     if trips:
-        return jsonify({"trips": trips})
+        trips_list = [
+            {
+                "id": trip.id,
+                "source": trip.source,
+                "destination": trip.destination,
+                "days_count": trip.days_count,
+            }
+            for trip in trips
+        ]
+        return jsonify({"trips": trips_list})
     return None

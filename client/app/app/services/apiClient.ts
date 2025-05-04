@@ -9,7 +9,7 @@ import type {
 type GetTokenFunction = () => Promise<string | null>;
 
 const API_BASE_URL: string | undefined = import.meta.env.VITE_BACKEND_API_URL;
-
+console.log(API_BASE_URL)
 if (!API_BASE_URL) {
     console.error("CRITICAL ERROR: API_URL is not defined in your env variables");
 

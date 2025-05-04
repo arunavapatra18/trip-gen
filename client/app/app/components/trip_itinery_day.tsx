@@ -25,7 +25,7 @@ const TripItineryDay = ({
                 <div className="p-4">
                     <div className="space-y-6">
                         {activities.map((activity, index) => (
-                             <TripItineryActivity title={activity.title} description={activity.description} isLast={index === activities.length - 1} imageUrl="/bg_main.jpg" time={activity.time}/>
+                             <TripItineryActivity key={index} title={activity.title} description={activity.description} isLast={index === activities.length - 1} imageUrl="/bg_main.jpg" time={activity.time}/>
                         ))}
                     </div>
                 </div>
