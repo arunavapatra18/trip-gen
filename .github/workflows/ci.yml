@@ -1,0 +1,48 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: '**'  
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Python Backend Setup
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install backend dependencies
+        run: |
+          cd server/app
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # - name: Run backend tests
+      #   run: |
+      #     cd server
+      #     pytest
+
+      # React Frontend Setup
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install client dependencies
+        run: |
+          cd client/app
+          npm install
+
+      # - name: Run client tests
+      #   run: |
+      #     cd clinet
+      #     npm test -- --watchAll=false
