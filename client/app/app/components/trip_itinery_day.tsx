@@ -14,8 +14,8 @@ const TripItineryDay = ({
     activities
 }: TripItineryDayProps): JSX.Element => {
     return (
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-            <div className="bg-gray-700 text-white p-4">
+        <div className="rounded-xl shadow-sm overflow-hidden">
+            <div className="bg-neutral p-4">
                 <div className="flex items-center">
                     <CalendarDaysIcon className="mr-2 h-5 w-5" />
                     <h2 className="text-xl font-bold">

@@ -25,8 +25,6 @@ def require_auth(f):
             )
             if not request_state.is_signed_in:
                 return jsonify({"error": "Unauthorized - Invalid token"}), 401
-            # You can access the user ID with request_state.payload.get('sub')
-            # You can access other claims with request_state.payload
             user_id = request_state.payload.get("sub")
             return f(user_id=user_id, *args, **kwargs)
         except Exception as e:

@@ -8,10 +8,10 @@ export default function DashboardComponent() {
                 <div
                     className="flex min-h-[480px] flex-col gap-6 md:gap-8 bg-cover bg-center bg-no-repeat items-start justify-end px-4 pb-10 md:px-10 rounded-xl"
                     style={{
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url("/bg_dash.svg")`
+                        backgroundImage: `linear-gradient(rgba(25, 54, 45, 0.2), rgba(25, 54, 45, 0.6)), url("/bg_dash.svg")`
                     }}
                     >
-                    <h1>Plan your next travel</h1>
+                    <h1 className="text-4xl text-white drop-shadow-lg font-poetsen">Let's Plan Your Unforgettable Journey</h1>
                 </div>
                 <div className="flex justify-end">
                     <a href="https://www.freepik.com/" className="max-w-fit text-xs justify-end">Beach Vectors by <span className="text-blue-500">Freepik</span></a>

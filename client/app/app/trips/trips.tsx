@@ -36,7 +36,7 @@ export default function Trips() {
     <main className="flex items-center justify-center pt-16 pb-4 md:px-40 px-20">
       <div className="layout-content-container flex flex-col max-w-[960px] flex-1">
         <div>
-          <h1>Your Trips</h1>
+          <h1 className="font-sans text-3xl">Your Trips</h1>
         </div>
         <div className="flex flex-wrap gap-7 pt-10 w-full max-sm:justify-center">
           {trips.map((trip) => (

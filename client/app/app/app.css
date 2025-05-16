@@ -1,18 +1,12 @@
 @import "tailwindcss";
-@plugin "daisyui";
-
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+@plugin "daisyui" {
+  themes: emerald --default, forest --prefersdark;
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+@theme {
+  --font-sans: "Roboto"; /* A highly readable and versatile sans-serif */
+  --font-serif: "Merriweather", serif; /* A classic serif for headings or emphasis */
+  --font-poetsen: "Poetsen One";
 }
 
 .grid-autofit {

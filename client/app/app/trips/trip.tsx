@@ -46,7 +46,7 @@ export default function Trip() {
   
   return (
     <div className="min-h-screen w-full">
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="font-sans max-w-4xl mx-auto px-4 py-8">
         <TripHeader
           title={trip.title}
           destination={trip.destinations}

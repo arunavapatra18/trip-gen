@@ -19,8 +19,8 @@ const TripItineryActivity = ({
     return (
         <div className="flex">
             <div className="mr-4 flex flex-col items-center">
-                <div className="rounded-full bg-blue-100 p-2 flex items-center justify-center">
-                    <ClockIcon className="h-4 w-4 text-blue-600" />
+                <div className="rounded-full bg-secondary p-2 flex items-center justify-center">
+                    <ClockIcon className="h-4 w-4 text-secondary-content" />
                 </div>
                 {!isLast && <div className="w-px h-full bg-blue-200 mt-2"></div>}
             </div>

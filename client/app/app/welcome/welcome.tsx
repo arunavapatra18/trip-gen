@@ -8,8 +8,8 @@ export function Welcome() {
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)), url("/bg_main.jpg")`
           }}
         >
-          <h1>
-            Plan your next travel
+          <h1 className="text-6xl text-white font-sans drop-shadow-lg">
+            Your Dream Trip, Simplified
           </h1>
         </div>
         <a href="https://www.vecteezy.com/free-vector/beach" className="text-xs text-right">Beach Vectors by <span className="text-blue-500">Vecteezy</span></a>

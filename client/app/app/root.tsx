@@ -52,6 +52,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Poetsen+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         <Meta />
         <Links />
       </head>
@@ -79,13 +82,16 @@ export default function App({loaderData} : Route.ComponentProps) {
       <InterceptorSetup />
       <header className="flex justify-between items-center py-4 px-8">
         <div>
-          <a href="/">
+          <a href="/" className="font-poetsen text-primary text-3xl">
           YetAnotherTripPlanner
           </a>
         </div>
-        <div>
+        <div className="flex">
         <SignedIn>
-          <UserButton />
+          <button className="btn btn-primary mr-4">
+            <a href="/trips">Trips</a>
+          </button>
+          <UserButton/>
         </SignedIn>
         <SignedOut>
           <CustomSignInButton />

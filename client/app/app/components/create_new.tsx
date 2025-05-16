@@ -7,7 +7,7 @@ export default function CreateNewButton() {
     return (
         <div>
             <button 
-                className="card card-border bg-base-100 size-50 hover:bg-gray-400 hover:shadow-md hover:border-gray-400 hover:text-black transition focus:ring-2 focus:ring-blue-500"
+                className="card card-border bg-neutral size-50 hover:bg-secondary hover:shadow-md hover:border-gray-400 hover:text-black transition focus:ring-2 focus:ring-blue-500"
                 onClick={() => {
                     navigate("/trips/new_trip")
                 }}
